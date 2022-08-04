@@ -15,7 +15,6 @@ const Twitter = () => {
       })
   }, [])
 
-
   return (
     <div>
       <h3 className="twitter-header">Top worldwide trends on Twitter: </h3>

@@ -38,8 +38,6 @@ const Reddit = () => {
     }
   }
 
-  console.log(posts)
-
   return (
     <div>
       <h1 id="reddit-header">Top posts on Reddit: </h1>
