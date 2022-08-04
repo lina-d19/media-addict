@@ -10,6 +10,7 @@
     "boostrap": "^2.0.0",
     "bootstrap": "^5.2.0",
     "cheerio": "^1.0.0-rc.12",
+    "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -31,13 +32,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node backend.js",
+    "start:backend": "nodemon backend.js",
     "start:frontend": "react-scripts start",
+    "start": "concurrently \"start:backend\" \"start:backend\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
-    
   },
   "eslintConfig": {
     "extends": [
