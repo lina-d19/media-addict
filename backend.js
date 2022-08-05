@@ -10,31 +10,10 @@ const linkPreviewGenerator = require('link-preview-generator')
 const spotify = require('spotify-web-api-node')
 const fetch = require('node-fetch')
 var request = require('request')
+const path = require("path")
 
 const app = express()
 app.use(cors())
-
-
-app.get('/', async (req, res) => {
-
-    const client = new TwitterApi(process.env.twt_bearer_token)
-
-    const trendsInternational = await client.v1.trendsByPlace(1);
-
-    const trendList = []
-
-    for (const {trends} of trendsInternational) {
-        for (const trend of trends) {
-            trendList.push({
-                name: trend.name,
-                url: trend.url
-            })
-        }
-    }
-
-    res.json(trendList)
-})
-
 
 
 app.get('/redditapi', async (req, res) => {
@@ -119,8 +98,27 @@ app.get('/newsarticles', async (req, res) => {
         })
         res.json(articles)
     }).catch(err => console.log(err))
-
-
 })
 
+app.get('/', async (req, res) => {
+
+    const client = new TwitterApi(process.env.twt_bearer_token)
+
+    const trendsInternational = await client.v1.trendsByPlace(1);
+
+    const trendList = []
+
+    for (const {trends} of trendsInternational) {
+        for (const trend of trends) {
+            trendList.push({
+                name: trend.name,
+                url: trend.url
+            })
+        }
+    }
+
+    res.json(trendList)
+})
+
+app.get("/*", (req, res) => {   res.sendFile(path.join(__dirname, "/build/index.html")); });
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
