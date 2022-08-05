@@ -6,7 +6,7 @@ const Reddit = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:8000/reddits')
+    fetch('http://localhost:8000/redditapi')
       .then(response => {return response.json()})
       .then(data => setPosts(data))
       .catch(err => console.log(err))

@@ -15,7 +15,7 @@ const app = express()
 app.use(cors())
 
 
-app.get('/s', async (req, res) => {
+app.get('/', async (req, res) => {
 
     const client = new TwitterApi(process.env.twt_bearer_token)
 
@@ -37,7 +37,7 @@ app.get('/s', async (req, res) => {
 
 
 
-app.get('/reddits', async (req, res) => {
+app.get('/redditapi', async (req, res) => {
     const r = new snoowrap({
         userAgent: process.env.user_agent,
         clientId: process.env.client_id,
@@ -92,7 +92,7 @@ app.get('/spotify', async (req, res) => {
 })
 */
 
-app.get('/newss', async (req, res) => {
+app.get('/newsarticles', async (req, res) => {
     const news_url = 'https://www.theguardian.com/international'
 
     axios(news_url)
