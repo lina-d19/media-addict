@@ -15,6 +15,32 @@ const path = require("path")
 const app = express()
 app.use(cors())
 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+
+app.get('/twitterapi', async (req, res) => {
+
+    const client = new TwitterApi(process.env.twt_bearer_token)
+
+    const trendsInternational = await client.v1.trendsByPlace(1);
+
+    const trendList = []
+
+    for (const {trends} of trendsInternational) {
+        for (const trend of trends) {
+            trendList.push({
+                name: trend.name,
+                url: trend.url
+            })
+        }
+    }
+
+    res.json(trendList)
+})
+
 
 app.get('/redditapi', async (req, res) => {
     const r = new snoowrap({
@@ -100,25 +126,5 @@ app.get('/newsarticles', async (req, res) => {
     }).catch(err => console.log(err))
 })
 
-app.get('/', async (req, res) => {
 
-    const client = new TwitterApi(process.env.twt_bearer_token)
-
-    const trendsInternational = await client.v1.trendsByPlace(1);
-
-    const trendList = []
-
-    for (const {trends} of trendsInternational) {
-        for (const trend of trends) {
-            trendList.push({
-                name: trend.name,
-                url: trend.url
-            })
-        }
-    }
-
-    res.json(trendList)
-})
-
-app.get("/*", (req, res) => {   res.sendFile(path.join(__dirname, "/build/index.html")); });
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
