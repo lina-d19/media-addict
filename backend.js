@@ -1,4 +1,4 @@
-const PORT = 8000
+const PORT = Number(process.env["PORT"]) || 8000 
 const express = require('express')
 const cors = require('cors')
 const {TwitterApi} = require('twitter-api-v2')
@@ -19,11 +19,11 @@ app.get('/', async (req, res) => {
 
     const client = new TwitterApi(process.env.twt_bearer_token)
 
-    const trendsOfNy = await client.v1.trendsByPlace(1);
+    const trendsInternational = await client.v1.trendsByPlace(1);
 
     const trendList = []
 
-    for (const {trends} of trendsOfNy) {
+    for (const {trends} of trendsInternational) {
         for (const trend of trends) {
             trendList.push({
                 name: trend.name,
