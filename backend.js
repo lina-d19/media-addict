@@ -15,7 +15,7 @@ const app = express()
 app.use(cors())
 
 
-app.get('/', async (req, res) => {
+app.get('/twitterapi', async (req, res) => {
 
     const client = new TwitterApi(process.env.twt_bearer_token)
 
