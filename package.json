@@ -36,7 +36,7 @@
   "scripts": {
     "start:backend": "nodemon backend.js",
     "start:frontend": "react-scripts start",
-    "start": "concurrently \"nodemon backend.js\" \"react-scripts start\"",
+    "start": "concurrently \"react-scripts start\" \"nodemon backend.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "heroku-postbuild": "npm run build"
