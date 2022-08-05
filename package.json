@@ -39,11 +39,6 @@
     "start": "concurrently \"nodemon backend.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-<<<<<<< HEAD
-    "eject": "react-scripts eject",
-=======
-    "eject": "react-scripts eject"
->>>>>>> 1828012da41ea86e8c86f7136dd1d1cfb6800ec6
     "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
