@@ -6,7 +6,7 @@ const News = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:8000/news')
+    fetch('http://localhost:8000/newss')
       .then(response => {return response.json()})
       .then(data => setArticles(data))
       .catch(err => console.log(err))

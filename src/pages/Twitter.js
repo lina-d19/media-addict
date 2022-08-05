@@ -6,7 +6,7 @@ const Twitter = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('http://localhost:8000')
+    fetch('http://localhost:8000/s')
       .then(response => {return response.json()})
       .then(data => setTrends(data))
       .catch(err => console.log(err))
