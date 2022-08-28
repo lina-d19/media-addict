@@ -52,7 +52,7 @@ app.get('/redditapi', async (req, res) => {
 
     topPosts = []
     
-    ;(await r.getHot()).forEach(post => {
+    ;(await r.getHot('popular')).forEach(post => {
         topPosts.push({
             title: post.title,
             url: post.url
