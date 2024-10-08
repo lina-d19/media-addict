@@ -6,7 +6,7 @@ const Twitter = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://calm-stream-00694.herokuapp.com/twitterapi')
+    fetch('http://localhost:3000/twitterapi')
       .then(response => {return response.json()})
       .then(data => setTrends(data))
       .catch(err => console.log(err))

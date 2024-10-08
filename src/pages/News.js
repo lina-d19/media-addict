@@ -6,7 +6,7 @@ const News = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://calm-stream-00694.herokuapp.com/newsarticles')
+    fetch('http://localhost:3000/newsarticles')
       .then(response => {return response.json()})
       .then(data => setArticles(data))
       .catch(err => console.log(err))

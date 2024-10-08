@@ -6,7 +6,7 @@ const Reddit = () => {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://calm-stream-00694.herokuapp.com/redditapi')
+    fetch('http://localhost:3000/redditapi')
       .then(response => {return response.json()})
       .then(data => setPosts(data))
       .catch(err => console.log(err))
