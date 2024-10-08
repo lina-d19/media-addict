@@ -6,6 +6,14 @@ This app was designed for users who want a quick place to keep up with the lates
 
 Click here to see what's currently trending on Twitter, Reddit, and The Guardian --> https://calm-stream-00694.herokuapp.com/
 
+## Running the App Locally
+Run the command:
+
+```bash
+$ npm start
+
+```
+
 ## Features 
 
 - current trending hashtags and phrases on Twitter 
